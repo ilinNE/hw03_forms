@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Пост {{post.text|slice:":30"}}{% endblock title %} 
+{% block title %} Пост {{post.text|slice:":30"}}{% endblock title %} 
 {% block content %}
     <div class="container py-5">
       <div class="row">
@@ -33,6 +33,11 @@
           <p>
            {{post.text}} 
           </p>
+          {% if request.user == post.author %}
+          <a class="btn btn-primary" href="{% url 'posts:post_edit' post.id %}">
+            Редактировать запись
+          </a>  
+          {% endif %}
         </article>
       </div>
     </div>
