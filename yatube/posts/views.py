@@ -10,7 +10,6 @@ from .forms import PostForm
 User = get_user_model()
 
 
-@login_required
 def index(request):
     post_list = Post.objects.order_by('-pub_date')
     paginator = Paginator(post_list, 10)
@@ -56,6 +55,7 @@ def post_detail(request, post_id):
     return render(request, 'posts/post_detail.html', context)
 
 
+@login_required
 def post_create(request):
     if request.method == 'POST':
         user = request.user
