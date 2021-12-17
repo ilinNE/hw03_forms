@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
-{% block title %} Профайл пользователя {{author.get_full_name}}{% endblock title %}
+{% block title %} Профайл пользователя {{ author.get_full_name }}{% endblock title %}
 {% block content %}
       <div class="container py-5">        
-        <h1>Все посты пользователя {{author.get_full_name}} </h1>
-        <h3>Всего постов: {{page_obj.paginator.count}} </h3>   
+        <h1>Все посты пользователя {{ author.get_full_name }} </h1>
+        <h3>Всего постов: {{ page_obj.paginator.count }} </h3>   
         {% for post in page_obj %}
           <article>
             <ul>
               <li>
-                Дата публикации:  {{post.pub_date|date:"d E Y"}} 
+                Дата публикации:  {{ post.pub_date|date:"d E Y" }} 
               </li>
             </ul>
             <p>      
-              {{post.text}}         
+              {{ post.text }}         
             </p>
             <a href="{% url 'posts:post_detail' post.id %}">Подробная информация</a>
           </article>
